@@ -8,6 +8,7 @@ public class ObstaclesSpawner : MonoBehaviour
     [SerializeField] GameObject _prefabToSpawn;
     [SerializeField] int _maxNumObjectsToSpawn;
     [SerializeField] float _heightAboveGroundToSpawn;
+    [SerializeField] float _distanceToSpawn = 0.1f;
 
     [SerializeField] Material[] _materials;
     [SerializeField] Texture[] _textures;
@@ -49,7 +50,7 @@ public class ObstaclesSpawner : MonoBehaviour
     private void Update()
     {
         float distanceTraveled = _player.position.z - _lastSpawnPositionZ;
-        if (distanceTraveled >= 0.1f)
+        if (distanceTraveled >= _distanceToSpawn)
         {
             _numObjectsToSpawn = Random.Range(3, _maxNumObjectsToSpawn);
             for (int i = 0; i < _numObjectsToSpawn; i++)
